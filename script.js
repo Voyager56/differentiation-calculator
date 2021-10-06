@@ -3,17 +3,15 @@ function draw() {
       const expression = document.getElementById('eq').value
       const node = math.parse(expression)
       const expr = node.compile()
-      
+
     function differentiaion(x, h){
         let scope = {
           x: x
         }
         let delta = x+h;
         fd = expr.evaluate(scope)
-        console.log(`fd: ${fd}`)
         scope.x = delta;
         fx = expr.evaluate(scope)
-        console.log(`fx: ${fx}`)
         fprimex = (fx-fd)/h;
         return fprimex
     }
