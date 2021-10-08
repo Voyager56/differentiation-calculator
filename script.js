@@ -6,20 +6,20 @@ function draw() {
 
     function differentiaion(x, h){
         let scope = {
-          x: x
+          x: x-h
         }
-        let delta = x+h;
         fd = expr.evaluate(scope)
+        let delta = x+h;
         scope.x = delta;
         fx = expr.evaluate(scope)
-        fprimex = (fx-fd)/h;
+        fprimex = (fx-fd)/(2*h);
         return fprimex
     }
       const xValues = math.range(-10, 10, 0.1).toArray()
       const yValues = xValues.map(function (x) {
         return expr.evaluate({x: x})
       })
-      const ypValues = xValues.map(x => differentiaion(x,0.0001))
+      const ypValues = xValues.map(x => differentiaion(x,0.001))
 
       const trace1 = {
         x: xValues,
